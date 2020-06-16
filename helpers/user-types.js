@@ -1,0 +1,2 @@
+exports.MOVIE_ADDER = 'MOVIE ADDER';
+exports.MOVIE_WATCHER = 'MOVIE WATHCER';
