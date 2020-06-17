@@ -36,7 +36,7 @@ exports.register = async (req, res, next) => {
         await User.create({
             email: req.body.email,
             password: hashedPassword,
-            role: userType.MOVIE_WATCHER
+            role: userType.MOVIE_ADDER
         });
 
         return res.status(200).json({ message: 'User has been created' });
@@ -45,4 +45,9 @@ exports.register = async (req, res, next) => {
         next(error);
     }
 
+}
+
+exports.addMovie = (req, res, next) => {
+    console.log('Something');
+    return res.status(200).json({message : 'ceva'})
 }
