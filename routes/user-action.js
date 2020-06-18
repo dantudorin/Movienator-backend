@@ -12,7 +12,7 @@ const movieController = require('../controllers/movie');
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, path.join(__dirname, '..', '/movie-covers'));
+        cb(null, path.join(__dirname, '..', '/movie_covers'));
     },
     filename: (req, file, cb) => {
         cb(null, Date.now() + '-' + file.originalname);

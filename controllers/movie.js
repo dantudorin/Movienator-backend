@@ -1,6 +1,7 @@
 const {Movie} = require('../models/Movie');
 const fs = require('fs');
 const User = require('../models/User');
+const {validationResult} = require('express-validator');
 
 exports.addMovie = async (req, res, next) => {
     try{

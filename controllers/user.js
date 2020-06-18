@@ -38,7 +38,7 @@ exports.register = async (req, res, next) => {
         await User.create({
             email: req.body.email,
             password: hashedPassword,
-            role: userType.MOVIE_WATCHER
+            role: userType.MOVIE_ADDER
         });
 
         return res.status(200).json({ message: 'User has been created' });

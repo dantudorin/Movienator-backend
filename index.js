@@ -15,7 +15,7 @@ mongoose.connect(
     });
 
 application.use(express.json());
-application.use('/movie-covers', express.static(path.join(__dirname, 'movie-covers')));
+application.use('/movie-covers', express.static(path.join(__dirname, 'movie_covers')));
 application.use('/user-action', userActionsRoute);
 application.use('/auth', authRoute);
 
