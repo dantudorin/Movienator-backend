@@ -8,7 +8,7 @@ const userSchema = new Schema({
     role: String,
     watchList: {
         type: [movieSchema],
-        default: undefined
+        default: []
     }
 });
 

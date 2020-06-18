@@ -76,10 +76,9 @@ exports.addToWatchList = async (req, res, next) => {
         if(!movie) return res.status(404).json({message : 'Movie not found'});
 
         const user = await User.findById(req.user.id);
-       
-        if(!user.watchList) {
-            user.watchList = [];
-        }
+
+        const find = user.watchList.find(movie => movie.id === movieId);
+        if(find) return res.status(400).json({message : 'Movie already in watchlist'});
 
         user.watchList.push(movie);
         user.save();
@@ -98,8 +97,8 @@ exports.removeFromWatchList = async (req, res, next) => {
         if(!movie) return res.status(404).json({message : 'Movie not found'});
 
         const user = await User.findById(req.user.id);
-
-        if(!user.watchList) return res.status(400).json({message : 'Watchlist empty'});
+        console.log(user.watchList);
+        if(user.watchList.length === 0) return res.status(400).json({message : 'Watchlist empty'});
 
         user.watchList = user.watchList.filter(movie => movie.id !== moviedId);
         user.save();

@@ -57,5 +57,6 @@ router.post('/add-movie', (req, res, next) => {
 ], userController.addMovie);
 
 router.put('/add-toWatchList/:movieId', [isAuth, isMovieWatcher], userController.addToWatchList);
+router.delete('/remove-fromWatchList/:movieId', [isAuth, isMovieWatcher], userController.removeFromWatchList);
 
 module.exports = router;
