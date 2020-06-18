@@ -24,7 +24,7 @@ application.use((req, res, next) => {
 })
 
 application.use((error, req, res, next) => {
-    console.log('A aparut o eroare.');
+    console.log(error);
     return res.status(500).json({ message: 'SOMETHING WENT WRONG' });
 })
 

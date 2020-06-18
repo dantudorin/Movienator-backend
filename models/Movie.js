@@ -5,9 +5,9 @@ const movieSchema =new Schema({
     title : String, 
     releaseYear : Number, 
     imdbRating : Number, 
-    description : String, image : String
+    description : String, image : String,
+    coverPath : String
 });
 
 const Movie = mongoose.model('Movie', movieSchema);
-module.exports = Movie;
-module.exports = movieSchema;
+module.exports = {Movie, movieSchema};
