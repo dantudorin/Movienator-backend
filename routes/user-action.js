@@ -8,6 +8,7 @@ const path = require('path');
 const { body } = require('express-validator');
 const { Movie } = require('../models/Movie');
 const router = express.Router();
+const movieController = require('../controllers/movie');
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -54,9 +55,11 @@ router.post('/add-movie', (req, res, next) => {
     body('releaseYear').notEmpty().trim().isDecimal(),
     body('imdbRating').notEmpty().trim().isFloat(),
     body('description').notEmpty().trim().isLength({ min: 10 })
-], userController.addMovie);
+], movieController.addMovie);
 
-router.put('/add-toWatchList/:movieId', [isAuth, isMovieWatcher], userController.addToWatchList);
-router.delete('/remove-fromWatchList/:movieId', [isAuth, isMovieWatcher], userController.removeFromWatchList);
+router.put('/add-toWatchList/:movieId', [isAuth, isMovieWatcher], movieController.addToWatchList);
+router.delete('/remove-fromWatchList/:movieId', [isAuth, isMovieWatcher], movieController.removeFromWatchList);
+router.get('/getMovies', movieController.getAllMovies);
+router.get('/getWatchlist', [isAuth, isMovieWatcher], movieController.getWatchList);
 
 module.exports = router;
